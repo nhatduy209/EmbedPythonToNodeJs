@@ -1,0 +1,27 @@
+<div class="mt-5">
+    <strong> type input and see what happens
+    </strong>
+    <input type="text" id="texttype" value="" onkeypress="onChangeHandler(this.value)"/>
+    <p id="name"></p>
+</div>
+
+<script>
+    function onChangeHandler(val){
+      text = val;
+      val = event.keyCode || event.charCode;  // backspace detect 
+      if(val === 32)
+      {   
+        $.ajax({
+						type: 'GET',
+						data: text,
+            url: './change',						
+            success: function(data) {
+                 console.log('ok');
+           },
+           error : function(err){
+             console.log('err');
+           }   
+        });
+      }
+    }
+</script>
